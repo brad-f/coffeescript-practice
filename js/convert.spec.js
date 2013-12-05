@@ -5,11 +5,34 @@
   convert = require('./convert').convert;
 
   describe('Convert', function() {
-    return it('will return one', function() {
-      var result;
-      result = convert(1);
-      return expect(result).toBe("one");
-    });
+    var test;
+    test = function(num, str) {
+      return it('will return ' + str, function() {
+        var result;
+        result = convert(num);
+        return expect(result).toBe(str);
+      });
+    };
+    test(1, "one");
+    test(2, "two");
+    test(3, "three");
+    test(4, "four");
+    test(5, "five");
+    test(6, "six");
+    test(7, "seven");
+    test(8, "eight");
+    test(9, "nine");
+    test(10, "ten");
+    test(11, "eleven");
+    test(12, "twelve");
+    test(13, "thirteen");
+    test(14, "fourteen");
+    test(15, "fifteen");
+    test(16, "sixteen");
+    test(17, "seventeen");
+    test(18, "eighteen");
+    test(19, "nineteen");
+    return test(20, "twenty");
   });
 
 }).call(this);
