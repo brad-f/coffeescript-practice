@@ -5,13 +5,25 @@
   convert = require('./convert').convert;
 
   describe('Convert', function() {
-    var test;
+    var adv_test, test;
     test = function(num, str) {
       return it('will return ' + str, function() {
         var result;
         result = convert(num);
         return expect(result).toBe(str);
       });
+    };
+    adv_test = function(num, str) {
+      test(num, str);
+      test(num + 1, str + " one");
+      test(num + 2, str + " two");
+      test(num + 3, str + " three");
+      test(num + 4, str + " four");
+      test(num + 5, str + " five");
+      test(num + 6, str + " six");
+      test(num + 7, str + " seven");
+      test(num + 8, str + " eight");
+      return test(num + 9, str + " nine");
     };
     test(1, "one");
     test(2, "two");
@@ -32,11 +44,14 @@
     test(17, "seventeen");
     test(18, "eighteen");
     test(19, "nineteen");
-    test(20, "twenty");
-    test(21, "twenty one");
-    test(22, "twenty two");
-    test(23, "twenty three");
-    return test(24, "twenty four");
+    adv_test(20, "twenty");
+    adv_test(30, "thirty");
+    adv_test(40, "forty");
+    adv_test(50, "fifty");
+    adv_test(60, "sixty");
+    adv_test(70, "seventy");
+    adv_test(80, "eighty");
+    return adv_test(90, "ninety");
   });
 
 }).call(this);
