@@ -1,4 +1,5 @@
 basics = [
+  '',
   'one',
   'two',
   'three',
@@ -22,8 +23,8 @@ basics = [
 
 convert = (num) ->
   if num < 20
-    return basics[num-1]
+    return basics[num]
   else if num < 30
-    return "twenty " + convert(num % 10)
+    return ("twenty " + convert(num % 10)).trim()
 
 exports.convert = convert
