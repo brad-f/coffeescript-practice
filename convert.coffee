@@ -76,6 +76,6 @@ _convert = (num) ->
     
 exports.convert = (num) ->
   if num < 0
-    return _convert(-num) + " dollars"
+    return "negative " + _convert(-num) + " dollars"
   else
     return _convert(num) + " dollars"
