@@ -44,17 +44,17 @@
     } else if (num < ONE_MILLION) {
       thousands = Math.floor(num / ONE_THOUSAND);
       rem = num % ONE_THOUSAND;
-      str = convert(thousands) + " thousand";
+      str = _convert(thousands) + " thousand";
       return recurse_if_necessary(str, rem);
     } else if (num < ONE_BILLION) {
       millions = Math.floor(num / ONE_MILLION);
       rem = num % ONE_MILLION;
-      str = convert(millions) + " million";
+      str = _convert(millions) + " million";
       return recurse_if_necessary(str, rem);
     } else if (num < ONE_TRILLION) {
       billions = Math.floor(num / ONE_BILLION);
       rem = num % ONE_BILLION;
-      str = convert(billions) + " billion";
+      str = _convert(billions) + " billion";
       return recurse_if_necessary(str, rem);
     }
   };

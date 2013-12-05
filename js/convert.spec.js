@@ -52,7 +52,11 @@
     adv_test(70, "seventy");
     adv_test(80, "eighty");
     adv_test(90, "ninety");
-    return adv_test(200, "two hundred");
+    adv_test(200, "two hundred");
+    adv_test(3000, "three thousand");
+    adv_test(30000, "thirty thousand");
+    adv_test(300000, "three hundred thousand");
+    return adv_test(3000000, "three million");
   });
 
 }).call(this);

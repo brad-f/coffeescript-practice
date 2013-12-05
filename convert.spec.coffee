@@ -51,3 +51,8 @@ describe 'Convert', ->
   adv_test(90, "ninety")
 
   adv_test(200, "two hundred")
+  adv_test(3000, "three thousand")
+  adv_test(30000, "thirty thousand")
+  adv_test(300000, "three hundred thousand")
+  adv_test(3000000, "three million")
+
