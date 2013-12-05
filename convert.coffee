@@ -44,7 +44,7 @@ convert = (num) ->
     tens = Math.floor(num / 10)
     rem = num % 10
     return special[tens - 2] if rem == 0
-    return special[tens - 2] + " " + convert(num % 10)
+    return special[tens - 2] + " " + convert(rem)
   else if num < ONE_THOUSAND
     hundreds = Math.floor(num / ONE_HUNDRED)
     rem = num % ONE_HUNDRED
