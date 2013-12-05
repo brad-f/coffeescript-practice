@@ -5,6 +5,7 @@
   basics = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
 
   convert = function(num) {
+    var hundreds, rem;
     if (num < 20) {
       return basics[num];
     } else if (num < 30) {
@@ -23,6 +24,10 @@
       return ("eighty " + convert(num % 10)).trim();
     } else if (num < 100) {
       return ("ninety " + convert(num % 10)).trim();
+    } else if (num < 1000) {
+      hundreds = Math.floor(num / 100);
+      rem = num % 100;
+      return (basics[hundreds] + " hundred " + convert(rem)).trim();
     }
   };
 

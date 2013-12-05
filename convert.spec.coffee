@@ -49,3 +49,5 @@ describe 'Convert', ->
   adv_test(70, "seventy")
   adv_test(80, "eighty")
   adv_test(90, "ninety")
+
+  adv_test(200, "two hundred")

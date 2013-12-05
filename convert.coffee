@@ -40,5 +40,9 @@ convert = (num) ->
     return ("eighty " + convert(num % 10)).trim()
   else if num < 100
     return ("ninety " + convert(num % 10)).trim()
-
+  else if num < 1000
+    hundreds = Math.floor(num / 100)
+    rem = num % 100
+    return (basics[hundreds] + " hundred " + convert(rem)).trim()
+    
 exports.convert = convert

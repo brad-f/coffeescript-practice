@@ -51,7 +51,8 @@
     adv_test(60, "sixty");
     adv_test(70, "seventy");
     adv_test(80, "eighty");
-    return adv_test(90, "ninety");
+    adv_test(90, "ninety");
+    return adv_test(200, "two hundred");
   });
 
 }).call(this);
