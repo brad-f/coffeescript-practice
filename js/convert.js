@@ -60,7 +60,11 @@
   };
 
   exports.convert = function(num) {
-    return _convert(num) + " dollars";
+    if (num < 0) {
+      return _convert(-num) + " dollars";
+    } else {
+      return _convert(num) + " dollars";
+    }
   };
 
 }).call(this);

@@ -75,4 +75,7 @@ _convert = (num) ->
     return recurse_if_necessary(str, rem)
     
 exports.convert = (num) ->
-  return _convert(num) + " dollars"
+  if num < 0
+    return _convert(-num) + " dollars"
+  else
+    return _convert(num) + " dollars"
