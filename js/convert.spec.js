@@ -10,7 +10,7 @@
       return it('will return ' + str, function() {
         var result;
         result = convert(num);
-        return expect(result).toBe(str);
+        return expect(result).toBe(str + " dollars");
       });
     };
     adv_test = function(num, str) {

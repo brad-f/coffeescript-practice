@@ -5,7 +5,7 @@ describe 'Convert', ->
   test = (num, str) ->  
     it 'will return ' + str, ->
       result = convert(num)
-      expect(result).toBe str
+      expect(result).toBe(str + " dollars")
 
   adv_test = (num, str) ->
     test(num, str)

@@ -39,9 +39,9 @@ ONE_TRILLION = ONE_BILLION * ONE_THOUSAND
 
 recurse_if_necessary = (str, rem) ->
   return str if rem == 0
-  return str + " " + convert(rem)
+  return str + " " + _convert(rem)
 
-convert = (num) ->
+_convert = (num) ->
   if num < 1
     return (num * 100) "/100"  
   else if num < 20
@@ -74,4 +74,5 @@ convert = (num) ->
     str = convert(billions) + " billion"
     return recurse_if_necessary(str, rem)
     
-exports.convert = convert
+exports.convert = (num) ->
+  return _convert(num) + " dollars"
