@@ -57,7 +57,8 @@
     adv_test(3000, "three thousand");
     adv_test(30000, "thirty thousand");
     adv_test(300000, "three hundred thousand");
-    return adv_test(3000000, "three million");
+    adv_test(3000000, "three million");
+    return test(3245987.36, "three million two hundred forty five thousand nine hundred eighty seven and 36/100");
   });
 
 }).call(this);

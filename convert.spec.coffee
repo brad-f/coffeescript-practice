@@ -57,3 +57,4 @@ describe 'Convert', ->
   adv_test(300000, "three hundred thousand")
   adv_test(3000000, "three million")
 
+  test(3245987.36, "three million two hundred forty five thousand nine hundred eighty seven and 36/100") 
