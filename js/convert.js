@@ -25,8 +25,12 @@
 
   convert = function(num) {
     var billions, hundreds, millions, rem, str, tens, thousands;
-    if (num < 20) {
-      return basics[num - 1];
+    if (num < 1) {
+      return (num * 100)("/100");
+    } else if (num < 20) {
+      rem = num % 1;
+      str = basics[num - 1];
+      return recurse_if_necessary(str, rem);
     } else if (num < ONE_HUNDRED) {
       tens = Math.floor(num / 10);
       rem = num % 10;
