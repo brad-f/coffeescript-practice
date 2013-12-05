@@ -1,0 +1,4 @@
+#/bin/bash
+./node_modules/.bin/coffee -o ./js -c ./convert.coffee
+./node_modules/.bin/coffee -o ./js -c ./convert.spec.coffee
+./node_modules/.bin/jasmine-node ./js
