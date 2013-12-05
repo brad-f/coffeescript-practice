@@ -32,7 +32,11 @@
     test(17, "seventeen");
     test(18, "eighteen");
     test(19, "nineteen");
-    return test(20, "twenty");
+    test(20, "twenty");
+    test(21, "twenty one");
+    test(22, "twenty two");
+    test(23, "twenty three");
+    return test(24, "twenty four");
   });
 
 }).call(this);

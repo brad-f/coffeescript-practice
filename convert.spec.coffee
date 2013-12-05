@@ -27,3 +27,7 @@ describe 'Convert', ->
   test(18, "eighteen")
   test(19, "nineteen")
   test(20, "twenty")
+  test(21, "twenty one")
+  test(22, "twenty two")
+  test(23, "twenty three")
+  test(24, "twenty four")
