@@ -43,7 +43,7 @@ recurse_if_necessary = (str, rem) ->
 
 _convert = (num) ->
   if num < 1
-    return (num * 100) "/100"  
+    return (num * 100) + "/100"  
   else if num < 20
     rem = num % 1
     str = basics[num - 1]

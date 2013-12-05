@@ -25,6 +25,7 @@
       test(num + 8, str + " eight");
       return test(num + 9, str + " nine");
     };
+    test(0.04, "4/100");
     test(1, "one");
     test(2, "two");
     test(3, "three");
