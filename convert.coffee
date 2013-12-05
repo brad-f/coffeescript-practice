@@ -37,38 +37,37 @@ ONE_MILLION = ONE_THOUSAND * ONE_THOUSAND
 ONE_BILLION = ONE_MILLION * ONE_THOUSAND
 ONE_TRILLION = ONE_BILLION * ONE_THOUSAND
 
+recurse_if_necessary = (str, rem) ->
+  return str if rem == 0
+  return str + " " + convert(rem)
+
 convert = (num) ->
   if num < 20
     return basics[num - 1]
   else if num < ONE_HUNDRED
     tens = Math.floor(num / 10)
     rem = num % 10
-    return special[tens - 2] if rem == 0
-    return special[tens - 2] + " " + convert(rem)
+    str = special[tens - 2]
+    return recurse_if_necessary(str, rem)
   else if num < ONE_THOUSAND
     hundreds = Math.floor(num / ONE_HUNDRED)
     rem = num % ONE_HUNDRED
     str = basics[hundreds - 1] + " hundred"
-    return str if rem == 0
-    return str + " " + convert(rem)
+    return recurse_if_necessary(str, rem)
   else if num < ONE_MILLION
     thousands = Math.floor(num / ONE_THOUSAND)
     rem = num % ONE_THOUSAND
     str = convert(thousands) + " thousand"
-    return str if rem == 0
-    return str + " " + convert(rem)
+    return recurse_if_necessary(str, rem)
   else if num < ONE_BILLION
     millions = Math.floor(num / ONE_MILLION)
     rem = num % ONE_MILLION
     str = convert(millions) + " million"
-    return str if rem == 0
-    return str + " " + convert(rem)
+    return recurse_if_necessary(str, rem)
   else if num < ONE_TRILLION
     billions = Math.floor(num / ONE_BILLION)
     rem = num % ONE_BILLION
     str = convert(billions) + " billion"
-    return str if rem == 0
-    return str + " " + convert(rem)
+    return recurse_if_necessary(str, rem)
     
-   
 exports.convert = convert
