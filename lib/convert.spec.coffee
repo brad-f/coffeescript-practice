@@ -62,3 +62,4 @@ describe 'Convert', ->
   test(1.00, "One")
   test(0.99, "99/100")
   test(2523.04, "Two thousand five hundred twenty-three and 04/100")
+  test(2450.33, "Two thousand four hundred fifty and 33/100")

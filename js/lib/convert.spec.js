@@ -68,7 +68,8 @@
     test(0.00, "Zero");
     test(1.00, "One");
     test(0.99, "99/100");
-    return test(2523.04, "Two thousand five hundred twenty-three and 04/100");
+    test(2523.04, "Two thousand five hundred twenty-three and 04/100");
+    return test(2450.33, "Two thousand four hundred fifty and 33/100");
   });
 
 }).call(this);

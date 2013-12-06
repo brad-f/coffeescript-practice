@@ -65,8 +65,8 @@ _convert = (num) ->
   else if num < ONE_HUNDRED
     [q, r] = _evaluate num, 10
     
-    if r == 0
-      return "#{special[q-2]}"
+    if r < 1
+      return "#{special[q-2]} #{_convert r}"
     else
       return "#{special[q-2]}-#{_convert r}"
 

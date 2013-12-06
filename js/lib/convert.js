@@ -46,8 +46,8 @@
       return "" + basics[q - 1] + " " + (_convert(r));
     } else if (num < ONE_HUNDRED) {
       _ref1 = _evaluate(num, 10), q = _ref1[0], r = _ref1[1];
-      if (r === 0) {
-        return "" + special[q - 2];
+      if (r < 1) {
+        return "" + special[q - 2] + " " + (_convert(r));
       } else {
         return "" + special[q - 2] + "-" + (_convert(r));
       }
