@@ -43,7 +43,13 @@ evaluate = (numerator, denominator) ->
   return [quotient, remainder]
 
 evaluate_fraction = (num) ->
-  return "#{Math.round(num*100)}/100"
+  return "#{padleft(Math.round(num*100))}/100"
+
+padleft = (num) ->
+  if num < 10
+    return "0#{num}"
+  else
+    return num
 
 _convert = (num) ->
   if num == 0

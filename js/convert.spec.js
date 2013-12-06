@@ -5,7 +5,7 @@
   convert = require('./convert').convert;
 
   describe('Convert', function() {
-    var adv_test, test;
+    var test, test_case;
     test = function(num, str) {
       return it('will return ' + str, function() {
         var result;
@@ -13,7 +13,7 @@
         return expect(result).toBe(str + " dollars");
       });
     };
-    adv_test = function(num, str) {
+    test_case = function(num, str) {
       test(num, str);
       test(num + 1, str + " one");
       test(num + 2, str + " two");
@@ -25,7 +25,7 @@
       test(num + 8, str + " eight");
       return test(num + 9, str + " nine");
     };
-    test(0.04, "4/100");
+    test(0.04, "04/100");
     test(1, "one");
     test(2, "two");
     test(3, "three");
@@ -45,20 +45,22 @@
     test(17, "seventeen");
     test(18, "eighteen");
     test(19, "nineteen");
-    adv_test(20, "twenty");
-    adv_test(30, "thirty");
-    adv_test(40, "forty");
-    adv_test(50, "fifty");
-    adv_test(60, "sixty");
-    adv_test(70, "seventy");
-    adv_test(80, "eighty");
-    adv_test(90, "ninety");
-    adv_test(200, "two hundred");
-    adv_test(3000, "three thousand");
-    adv_test(30000, "thirty thousand");
-    adv_test(300000, "three hundred thousand");
-    adv_test(3000000, "three million");
-    return test(3245987.36, "three million two hundred forty five thousand nine hundred eighty seven and 36/100");
+    test_case(20, "twenty");
+    test_case(30, "thirty");
+    test_case(40, "forty");
+    test_case(50, "fifty");
+    test_case(60, "sixty");
+    test_case(70, "seventy");
+    test_case(80, "eighty");
+    test_case(90, "ninety");
+    test_case(200, "two hundred");
+    test_case(3000, "three thousand");
+    test_case(30000, "thirty thousand");
+    test_case(300000, "three hundred thousand");
+    test_case(3000000, "three million");
+    test(3245987.36, "three million two hundred forty five thousand nine hundred eighty seven and 36/100");
+    test(-3245987.36, "negative three million two hundred forty five thousand nine hundred eighty seven and 36/100");
+    return test(0, "zero");
   });
 
 }).call(this);
