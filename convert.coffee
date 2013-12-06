@@ -37,15 +37,15 @@ ONE_MILLION = ONE_THOUSAND * ONE_THOUSAND
 ONE_BILLION = ONE_MILLION * ONE_THOUSAND
 ONE_TRILLION = ONE_BILLION * ONE_THOUSAND
 
-evaluate = (numerator, denominator) ->
+_evaluate = (numerator, denominator) ->
   quotient = Math.floor(numerator/denominator)
   remainder = numerator % denominator
   return [quotient, remainder]
 
-evaluate_fraction = (num) ->
-  return "#{padleft(Math.round(num*100))}/100"
+_evaluate_fraction = (num) ->
+  return "#{_padleft(Math.round(num*100))}/100"
 
-padleft = (num) ->
+_padleft = (num) ->
   if num < 10
     return "0#{num}"
   else
@@ -56,38 +56,41 @@ _convert = (num) ->
     return ""
 
   else if num < 1
-    return "and #{evaluate_fraction num}".trim()  
+    return "and #{_evaluate_fraction num}"  
 
   else if num < 20
-    [q, r] = evaluate num, 1
-    return "#{basics[q-1]} #{_convert r}".trim()
+    [q, r] = _evaluate num, 1
+    return "#{basics[q-1]} #{_convert r}"
 
   else if num < ONE_HUNDRED
-    [q, r] = evaluate num, 10
-    return "#{special[q-2]} #{_convert r}".trim()
+    [q, r] = _evaluate num, 10
+    return "#{special[q-2]} #{_convert r}"
 
   else if num < ONE_THOUSAND
-    [q, r] = evaluate num, ONE_HUNDRED
-    return "#{_convert q} hundred #{_convert r}".trim()
+    [q, r] = _evaluate num, ONE_HUNDRED
+    return "#{_convert q} hundred #{_convert r}"
 
   else if num < ONE_MILLION
-    [q, r] = evaluate num, ONE_THOUSAND
-    return "#{_convert q} thousand #{_convert r}".trim()
+    [q, r] = _evaluate num, ONE_THOUSAND
+    return "#{_convert q} thousand #{_convert r}"
 
   else if num < ONE_BILLION
-    [q, r] = evaluate num, ONE_MILLION
-    return "#{_convert q} million #{_convert r}".trim()
+    [q, r] = _evaluate num, ONE_MILLION
+    return "#{_convert q} million #{_convert r}"
 
   else if num < ONE_TRILLION
-    [q, r] = evaluate num, ONE_TRILLION
-    return "#{_convert q} billion #{_convert r}".trim()
+    [q, r] = _evaluate num, ONE_TRILLION
+    return "#{_convert q} billion #{_convert r}"
+
+_trim = (str) ->
+  return str.replace(/\s\s/g, ' ')
     
 exports.convert = (num) ->
   if num < 0
-    return "negative #{_convert -num} dollars"
+    return _trim("negative #{_convert -num} dollars")
   else if num == 0
     return "zero dollars"
   else if num < 1
-    return "#{evaluate_fraction num} dollars"
+    return _trim("#{_evaluate_fraction num} dollars")
   else
-    return "#{_convert num} dollars"
+    return _trim("#{_convert num} dollars")
