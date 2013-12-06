@@ -1,0 +1,3 @@
+#/bin/bash
+./node_modules/.bin/coffee -o ./js/lib -c ./lib/*.coffee
+./node_modules/.bin/coffee -o ./js -c ./*.coffee
