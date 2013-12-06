@@ -17,7 +17,7 @@ basics = [
   'sixteen',
   'seventeen',
   'eighteen',
-  'nineteen',
+  'nineteen'
 ]
 
 special = [
@@ -37,42 +37,41 @@ ONE_MILLION = ONE_THOUSAND * ONE_THOUSAND
 ONE_BILLION = ONE_MILLION * ONE_THOUSAND
 ONE_TRILLION = ONE_BILLION * ONE_THOUSAND
 
-recurse_if_necessary = (str, rem) ->
-  return str if rem == 0
-  return str + " " + _convert(rem)
+evaluate = (numerator, denominator) ->
+  quotient = Math.floor(numerator/denominator)
+  remainder = numerator % denominator
+  return [quotient, remainder]
 
 _convert = (num) ->
-  if num < 1
+  if num == 0
+    return ""
+
+  else if num < 1
     return Math.round(num * 100) + "/100"  
+
   else if num < 20
-    rem = num % 1
-    str = basics[Math.floor(num) - 1]
-    return recurse_if_necessary(str, rem)
+    [q, r] = evaluate num, 1
+    return basics[q - 1].trim()
+
   else if num < ONE_HUNDRED
-    tens = Math.floor(num / 10)
-    rem = num % 10
-    str = special[tens - 2]
-    return recurse_if_necessary(str, rem)
+    [q, r] = evaluate num, 10
+    return "#{special[q-2]} #{_convert(r)}".trim()
+
   else if num < ONE_THOUSAND
-    hundreds = Math.floor(num / ONE_HUNDRED)
-    rem = num % ONE_HUNDRED
-    str = basics[hundreds - 1] + " hundred"
-    return recurse_if_necessary(str, rem)
+    [q, r] = evaluate num, ONE_HUNDRED
+    return "#{basics[q-1]} hundred #{_convert(r)}".trim()
+
   else if num < ONE_MILLION
-    thousands = Math.floor(num / ONE_THOUSAND)
-    rem = num % ONE_THOUSAND
-    str = _convert(thousands) + " thousand"
-    return recurse_if_necessary(str, rem)
+    [q, r] = evaluate num, ONE_THOUSAND
+    return "#{_convert(q)} thousand #{_convert(r)}".trim()
+
   else if num < ONE_BILLION
-    millions = Math.floor(num / ONE_MILLION)
-    rem = num % ONE_MILLION
-    str = _convert(millions) + " million"
-    return recurse_if_necessary(str, rem)
+    [q, r] = evaluate num, ONE_MILLION
+    return "#{_convert(q)} million #{_convert(r)}".trim()
+
   else if num < ONE_TRILLION
-    billions = Math.floor(num / ONE_BILLION)
-    rem = num % ONE_BILLION
-    str = _convert(billions) + " billion"
-    return recurse_if_necessary(str, rem)
+    [q, r] = evaluate num, ONE_TRILLION
+    return "#{_convert(q)} billion #{_convert(r)}".trim()
     
 exports.convert = (num) ->
   if num < 0
