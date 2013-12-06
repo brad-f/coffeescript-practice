@@ -100,5 +100,7 @@ exports.convert = (num) ->
     return "Zero dollars"
   else if num < 1
     return _format("#{_evaluate_fraction num} dollars")
+  else if num == 1
+    return "One dollar"
   else
     return _format("#{_convert num} dollars")

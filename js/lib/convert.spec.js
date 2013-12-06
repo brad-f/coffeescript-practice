@@ -6,11 +6,14 @@
 
   describe('Convert', function() {
     var test, test_case;
-    test = function(num, str) {
+    test = function(num, str, ending) {
+      if (ending == null) {
+        ending = " dollars";
+      }
       return it('will return ' + str, function() {
         var result;
         result = convert(num);
-        return expect(result).toBe(str + " dollars");
+        return expect(result).toBe(str + ending);
       });
     };
     test_case = function(num, str, sep) {
@@ -28,7 +31,7 @@
       test(num + 8, str + sep + "eight");
       return test(num + 9, str + sep + "nine");
     };
-    test(1, "One");
+    test(1, "One", " dollar");
     test(2, "Two");
     test(3, "Three");
     test(4, "Four");
@@ -66,7 +69,7 @@
     test(0, "Zero");
     test(0.04, "04/100");
     test(0.00, "Zero");
-    test(1.00, "One");
+    test(1.00, "One", " dollar");
     test(0.99, "99/100");
     test(2523.04, "Two thousand five hundred twenty-three and 04/100");
     return test(2450.33, "Two thousand four hundred fifty and 33/100");

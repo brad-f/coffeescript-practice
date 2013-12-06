@@ -2,10 +2,10 @@ convert = require('./convert').convert
 
 describe 'Convert', ->
   
-  test = (num, str) ->  
+  test = (num, str, ending=" dollars") ->  
     it 'will return ' + str, ->
       result = convert(num)
-      expect(result).toBe(str + " dollars")
+      expect(result).toBe(str + ending)
 
   test_case = (num, str, sep = " ") ->
     test(num, str)
@@ -19,7 +19,7 @@ describe 'Convert', ->
     test(num + 8, str + sep + "eight")
     test(num + 9, str + sep + "nine")
 
-  test(1, "One")
+  test(1, "One", " dollar")
   test(2, "Two")
   test(3, "Three")
   test(4, "Four")
@@ -59,7 +59,7 @@ describe 'Convert', ->
   test(0, "Zero")
   test(0.04, "04/100")
   test(0.00, "Zero")
-  test(1.00, "One")
+  test(1.00, "One", " dollar")
   test(0.99, "99/100")
   test(2523.04, "Two thousand five hundred twenty-three and 04/100")
   test(2450.33, "Two thousand four hundred fifty and 33/100")
