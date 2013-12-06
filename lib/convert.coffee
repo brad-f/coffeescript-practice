@@ -85,15 +85,16 @@ _convert = (num) ->
   else
     throw new Error("unsupported argument")
 
-_trim = (str) ->
-  return str.replace(/\s\s/g, ' ')
+_format = (str) ->
+  str = str.replace(/\s\s/g, ' ') 
+  return str.charAt(0).toUpperCase() + str.slice(1)
     
 exports.convert = (num) ->
   if num < 0
-    return _trim("negative #{_convert -num} dollars")
+    return _format("negative #{_convert -num} dollars")
   else if num == 0
-    return "zero dollars"
+    return "Zero dollars"
   else if num < 1
-    return _trim("#{_evaluate_fraction num} dollars")
+    return _format("#{_evaluate_fraction num} dollars")
   else
-    return _trim("#{_convert num} dollars")
+    return _format("#{_convert num} dollars")
