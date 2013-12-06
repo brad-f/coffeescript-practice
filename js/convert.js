@@ -28,7 +28,7 @@
     if (num === 0) {
       return "";
     } else if (num < 1) {
-      return Math.round(num * 100) + "/100";
+      return "" + (Math.round(num * 100)) + "/100";
     } else if (num < 20) {
       _ref = evaluate(num, 1), q = _ref[0], r = _ref[1];
       return basics[q - 1].trim();
@@ -37,7 +37,7 @@
       return ("" + special[q - 2] + " " + (_convert(r))).trim();
     } else if (num < ONE_THOUSAND) {
       _ref2 = evaluate(num, ONE_HUNDRED), q = _ref2[0], r = _ref2[1];
-      return ("" + basics[q - 1] + " hundred " + (_convert(r))).trim();
+      return ("" + (_convert(q)) + " hundred " + (_convert(r))).trim();
     } else if (num < ONE_MILLION) {
       _ref3 = evaluate(num, ONE_THOUSAND), q = _ref3[0], r = _ref3[1];
       return ("" + (_convert(q)) + " thousand " + (_convert(r))).trim();

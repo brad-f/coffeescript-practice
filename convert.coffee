@@ -47,11 +47,11 @@ _convert = (num) ->
     return ""
 
   else if num < 1
-    return Math.round(num * 100) + "/100"  
+    return "#{Math.round(num * 100)}/100"  
 
   else if num < 20
     [q, r] = evaluate num, 1
-    return basics[q - 1].trim()
+    return basics[q-1].trim()
 
   else if num < ONE_HUNDRED
     [q, r] = evaluate num, 10
@@ -59,19 +59,19 @@ _convert = (num) ->
 
   else if num < ONE_THOUSAND
     [q, r] = evaluate num, ONE_HUNDRED
-    return "#{basics[q-1]} hundred #{_convert(r)}".trim()
+    return "#{_convert q} hundred #{_convert r}".trim()
 
   else if num < ONE_MILLION
     [q, r] = evaluate num, ONE_THOUSAND
-    return "#{_convert(q)} thousand #{_convert(r)}".trim()
+    return "#{_convert q} thousand #{_convert r}".trim()
 
   else if num < ONE_BILLION
     [q, r] = evaluate num, ONE_MILLION
-    return "#{_convert(q)} million #{_convert(r)}".trim()
+    return "#{_convert q} million #{_convert r}".trim()
 
   else if num < ONE_TRILLION
     [q, r] = evaluate num, ONE_TRILLION
-    return "#{_convert(q)} billion #{_convert(r)}".trim()
+    return "#{_convert q} billion #{_convert r}".trim()
     
 exports.convert = (num) ->
   if num < 0
