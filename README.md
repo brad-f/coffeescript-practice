@@ -2,6 +2,7 @@ coffeescript-practice
 =====================
 
 ### vagrant up
+### vagrant ssh
 ### cd /vagrant
 ### npm install
 ### ./run-tests
