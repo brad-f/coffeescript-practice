@@ -42,20 +42,23 @@ evaluate = (numerator, denominator) ->
   remainder = numerator % denominator
   return [quotient, remainder]
 
+evaluate_fraction = (num) ->
+  return "#{Math.round(num*100)}/100"
+
 _convert = (num) ->
   if num == 0
     return ""
 
   else if num < 1
-    return "#{Math.round(num * 100)}/100"  
+    return "and #{evaluate_fraction num}".trim()  
 
   else if num < 20
     [q, r] = evaluate num, 1
-    return basics[q-1].trim()
+    return "#{basics[q-1]} #{_convert r}".trim()
 
   else if num < ONE_HUNDRED
     [q, r] = evaluate num, 10
-    return "#{special[q-2]} #{_convert(r)}".trim()
+    return "#{special[q-2]} #{_convert r}".trim()
 
   else if num < ONE_THOUSAND
     [q, r] = evaluate num, ONE_HUNDRED
@@ -75,6 +78,10 @@ _convert = (num) ->
     
 exports.convert = (num) ->
   if num < 0
-    return "negative " + _convert(-num) + " dollars"
+    return "negative #{_convert -num} dollars"
+  else if num == 0
+    return "zero dollars"
+  else if num < 1
+    return "#{evaluate_fraction num} dollars"
   else
-    return _convert(num) + " dollars"
+    return "#{_convert num} dollars"
