@@ -79,8 +79,11 @@ _convert = (num) ->
     return "#{_convert q} million #{_convert r}"
 
   else if num < ONE_TRILLION
-    [q, r] = _evaluate num, ONE_TRILLION
+    [q, r] = _evaluate num, ONE_BILLION
     return "#{_convert q} billion #{_convert r}"
+
+  else
+    throw new Error("unsupported argument")
 
 _trim = (str) ->
   return str.replace(/\s\s/g, ' ')

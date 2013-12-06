@@ -54,7 +54,7 @@ describe 'Convert', ->
   test_case(30000, "thirty thousand")
   test_case(300000, "three hundred thousand")
   test_case(3000000, "three million")
-  #test_case(300000000, "three billion")
+  test_case(3000000000, "three billion")
 
   test(3245987.36, "three million two hundred forty five thousand nine hundred eighty seven and 36/100") 
   test(-3245987.36, "negative three million two hundred forty five thousand nine hundred eighty seven and 36/100") 

@@ -57,8 +57,10 @@
       _ref4 = _evaluate(num, ONE_MILLION), q = _ref4[0], r = _ref4[1];
       return "" + (_convert(q)) + " million " + (_convert(r));
     } else if (num < ONE_TRILLION) {
-      _ref5 = _evaluate(num, ONE_TRILLION), q = _ref5[0], r = _ref5[1];
+      _ref5 = _evaluate(num, ONE_BILLION), q = _ref5[0], r = _ref5[1];
       return "" + (_convert(q)) + " billion " + (_convert(r));
+    } else {
+      throw new Error("unsupported argument");
     }
   };
 
